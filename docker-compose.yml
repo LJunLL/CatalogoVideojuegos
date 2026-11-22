@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: videojuegos-db
+    environment:
+      POSTGRES_DB: videojuegos
+      POSTGRES_USER: videojuegos
+      POSTGRES_PASSWORD: videojuegos
+    ports:
+      - "5433:5432"
+    volumes:
+      # Al crear el contenedor por primera vez se ejecuta el script automáticamente
+      - ./datos/videojuegos.sql:/docker-entrypoint-initdb.d/videojuegos.sql
